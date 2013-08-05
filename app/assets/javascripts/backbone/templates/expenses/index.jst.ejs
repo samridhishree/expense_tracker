@@ -1,3 +1,5 @@
 <h1>Expense Tracker</h1>
 
-<%= expenses.length %>
+<% _.each(expenses.models, function(expense){ %>
+	<li><%= expense.get('title') %>: <%= expense.get('amount') %> || <%= expense.get('category') %>	
+<% }); %>
