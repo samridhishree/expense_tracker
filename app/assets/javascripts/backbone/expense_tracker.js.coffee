@@ -9,7 +9,9 @@ window.ExpenseTracker =
   Collections: {}
   Routers: {}
   Views: {}
-  init: -> alert "Hello World from backbone!"
+  init: -> 
+  	router = new ExpenseTracker.Routers.Expenses
+  	Backbone.history.start({pushState: true})
 
 $(document).ready ->
   	ExpenseTracker.init()
