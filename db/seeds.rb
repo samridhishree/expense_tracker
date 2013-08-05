@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+Expense.create!(title: "Auto to office", amount: 80, category: "Travel")
+Expense.create!(title: "Lunch office", amount: 50, category: "Food")
+Expense.create!(title: "Electricity Bill", amount: 2618, category: "Bills")
+Expense.create!(title: "Home Rent", amount: 10000, category: "Bills")
+Expense.create!(title: "Car EMI", amount: 11000, category: "Bills")
+Expense.create!(title: "Big Basket", amount: 800, category: "Groceries")

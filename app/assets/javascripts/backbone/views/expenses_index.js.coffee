@@ -1,8 +1,10 @@
 class ExpenseTracker.Views.ExpensesIndex extends Backbone.View
 
-  #template:  _.template("<h1>Expense Tracker</h1>")
   template: JST['backbone/templates/expenses/index']
+
+  initialize: ->
+  	@options.expenses.on('reset', @render, this)
   
   render: ->
-          $(@el).html(@template(expenses: "Expenses go here"))
-          this   
+    $(@el).html(@template(expenses: @options.expenses))
+    this   

@@ -4,9 +4,13 @@ class ExpenseTracker.Routers.Expenses extends Backbone.Router
 		'': "index"
 		'expenses/:id': "show"
 
+	initialize: ->
+		@collection = new ExpenseTracker.Collections.Expenses()
+		@collection.fetch()
+
 	index: ->
-		view = new ExpenseTracker.Views.ExpensesIndex
-		$("#container").html(view.render().el)
+		@view = new ExpenseTracker.Views.ExpensesIndex({expenses: @collection})
+		$("#container").html(@view.render().el)
 
 	show: (id) ->
 		alert "Expense #{id}"
