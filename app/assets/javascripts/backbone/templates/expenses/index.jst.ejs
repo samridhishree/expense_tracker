@@ -1,5 +1,3 @@
 <h1>Expense Tracker</h1>
 
-<% _.each(expenses.models, function(expense){ %>
-	<li><%= expense.get('title') %>: <%= expense.get('amount') %> || <%= expense.get('category') %>	
-<% }); %>
+<ul id="expenses-list"></ul>
