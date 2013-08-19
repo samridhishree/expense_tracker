@@ -10,7 +10,7 @@ class ExpensesController < ApplicationController
 	end
 
 	def create
-		respond_with Expense.create(params[:expense])
+		respond_with Expense.create(expense_params)
 	end
 
 	def update
@@ -19,5 +19,11 @@ class ExpensesController < ApplicationController
 
 	def destroy
 		respond_with Expense.destroy(params[:id])
+	end
+
+	private
+
+	def expense_params
+		params.require(:expense).permit(:title, :amount, :category)
 	end
 end
