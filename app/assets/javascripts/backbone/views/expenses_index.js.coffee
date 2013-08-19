@@ -20,4 +20,4 @@ class ExpenseTracker.Views.ExpensesIndex extends Backbone.View
 
   createExpense: (event) ->
     event.preventDefault()
-    @options.expenses.create title: $('#new_expense_title').val(), amount: $('#new_expense_amount').val(), category: $('#new_expense_category').val()
+    @options.expenses.create title: $('#new_expense_title').val(), amount: $('#new_expense_amount').val(), category: $('#new_expense_category').val(), expenseDate: $('#new_expense_date').val()
