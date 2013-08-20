@@ -7,9 +7,11 @@ class ExpenseTracker.Routers.Expenses extends Backbone.Router
 	initialize: ->
 		@collection = new ExpenseTracker.Collections.Expenses()
 		@collection.fetch()
+		@categoriesCollection = new ExpenseTracker.Collections.Categories()
+		@categoriesCollection.fetch()
 
 	index: ->
-		@view = new ExpenseTracker.Views.ExpensesIndex({expenses: @collection})
+		@view = new ExpenseTracker.Views.ExpensesIndex({expenses: @collection, categories: @categoriesCollection})
 		$("#container").html(@view.render().el)
 
 	show: (id) ->

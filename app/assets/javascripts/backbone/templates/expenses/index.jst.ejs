@@ -8,7 +8,12 @@
   <input type="text" name="amount" id="new_expense_amount">
 
   <label for="new_expense_category">Category</label>
-  <input type="text" name="category" id="new_expense_category">
+  <select name="categories" id="new_expense_category">
+  	<% _.each(categories.models, function(category){ %>
+  		<option value=<%= category.get('id') %>><%= category.get('name') %></option>
+  	<% }); %>
+  </select>
+
 
   <label for="new_expense_date">Date</label>
   <input type="date" name="expenseDate" id="new_expense_date">

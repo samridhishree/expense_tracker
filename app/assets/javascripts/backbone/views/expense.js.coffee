@@ -4,5 +4,5 @@ class ExpenseTracker.Views.Expense extends Backbone.View
   tagName: 'li'
 
   render: ->
-    $(@el).html(@template(expense: @options.model))
+    $(@el).html(@template(expense: @options.model, category: @options.category))
     this   

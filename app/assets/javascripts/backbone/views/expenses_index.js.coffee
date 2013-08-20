@@ -8,16 +8,19 @@ class ExpenseTracker.Views.ExpensesIndex extends Backbone.View
   initialize: ->
     @options.expenses.on('add', @appendExpense, this)
     @options.expenses.on('reset', @render, this)
+    @options.categories.on('reset', @render, this)
   
   render: ->
-    $(@el).html(@template)
-    @options.expenses.each(@appendExpense)
+    $(@el).html(@template(categories: @options.categories))
+    @options.expenses.each(@appendExpense, this)
     this
 
   appendExpense: (expense) ->
-  	view = new ExpenseTracker.Views.Expense(model: expense)
-  	$("#expenses-list").append(view.render().el)
+    category_id = expense.get('category_id')
+    category = @options.categories.get(category_id)
+    view = new ExpenseTracker.Views.Expense(model: expense, category: category.get('name'))
+   	$("#expenses-list").append(view.render().el)
 
   createExpense: (event) ->
     event.preventDefault()
-    @options.expenses.create title: $('#new_expense_title').val(), amount: $('#new_expense_amount').val(), category: $('#new_expense_category').val(), expenseDate: $('#new_expense_date').val()
+    @options.expenses.create title: $('#new_expense_title').val(), amount: $('#new_expense_amount').val(), category_id: $('#new_expense_category').val(), expenseDate: $('#new_expense_date').val()
